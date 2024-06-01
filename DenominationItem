@@ -1,0 +1,18 @@
+const DenominationItem = props => {
+  const {denomitionDetails, updateBalance} = props
+  const {value} = denomitionDetails
+
+  const onClickDenomination = () => {
+    updateBalance(value)
+  }
+
+  return (
+    <li>
+      <button type="button" onClick={onClickDenomination}>
+        {value}
+      </button>
+    </li>
+  )
+}
+
+export default DenominationItem
