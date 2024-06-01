@@ -1,0 +1,50 @@
+import {Component} from 'react'
+
+import DenominationItem from '../DenominationItem'
+
+class CashWidrawal extends Component {
+  state = {
+    balance: 2000,
+  }
+
+  updateBalance = value => {
+    this.setState(prevState => ({balance: prevState.balance - value}))
+  }
+
+  render() {
+    const {DenominationList} = this.props
+    const {balance} = this.state
+    const name = 'Sarah Williams'
+    const initial = name.slice(0, 1)
+
+    return (
+      <div>
+        <div>
+          <p>{initial}</p>
+          <h1>{name}</h1>
+        </div>
+        <div>
+          <p>Your Balance</p>
+          <p>{balance}</p>
+          <br />
+          <span>In Rupees</span>
+        </div>
+        <div>
+          <h1>Withdraw</h1>
+          <p>CHOOSE SUM IN (RUPEES)</p>
+        </div>
+        <ul>
+          {DenominationList.map(eachDenomination => (
+            <DenominationItem
+              key={eachDenomination.id}
+              DenominationDetials={eachDenomination}
+              updateBalance={this.updateBalance}
+            />
+          ))}
+        </ul>
+      </div>
+    )
+  }
+}
+
+export default CashWidrawal
